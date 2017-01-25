@@ -9,7 +9,7 @@ namespace DAL.Interface.Repository
 {
     public interface ISkillRepository: IRepository<DalSkill>
     {
-        IEnumerable<DalSkill> GetAllForUser(int lotId);
-        IEnumerable<DalSkill> GetAllForCategory(int lotId);
+        IEnumerable<DalSkill> GetAllForUser(int userId);
+        IEnumerable<DalSkill> GetAllForCategory(int categoryId);
     }
 }
