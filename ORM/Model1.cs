@@ -12,7 +12,6 @@ namespace ORM
         {
         }
 
-        public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<SkillCategory> SkillCategories { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
@@ -22,31 +21,6 @@ namespace ORM
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Profile>()
-                .Property(e => e.FirstName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Profile>()
-                .Property(e => e.LastName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Profile>()
-                .Property(e => e.Company)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Profile>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Profile>()
-                .Property(e => e.City)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Profile>()
-                .HasMany(e => e.Users)
-                .WithRequired(e => e.Profile)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Role>()
                 .Property(e => e.Name)
                 .IsUnicode(false);

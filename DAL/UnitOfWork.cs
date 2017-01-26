@@ -9,7 +9,7 @@ using DAL.Interface.Repository;
 
 namespace DAL
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         public DbContext Context { get; }
 
