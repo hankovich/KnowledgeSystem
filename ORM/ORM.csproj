@@ -66,6 +66,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201701261423439_InitialCreate.cs" />
+    <Compile Include="Migrations\201701261423439_InitialCreate.Designer.cs">
+      <DependentUpon>201701261423439_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701261523273_SampleMigrations.cs" />
+    <Compile Include="Migrations\201701261523273_SampleMigrations.Designer.cs">
+      <DependentUpon>201701261523273_SampleMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701261600409_SampleMigrations1.cs" />
+    <Compile Include="Migrations\201701261600409_SampleMigrations1.Designer.cs">
+      <DependentUpon>201701261600409_SampleMigrations1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701261603574_SampleMigrations2.cs" />
+    <Compile Include="Migrations\201701261603574_SampleMigrations2.Designer.cs">
+      <DependentUpon>201701261603574_SampleMigrations2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701261621507_SampleMigrations3.cs" />
+    <Compile Include="Migrations\201701261621507_SampleMigrations3.Designer.cs">
+      <DependentUpon>201701261621507_SampleMigrations3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -99,6 +120,23 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701261423439_InitialCreate.resx">
+      <DependentUpon>201701261423439_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261523273_SampleMigrations.resx">
+      <DependentUpon>201701261523273_SampleMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261600409_SampleMigrations1.resx">
+      <DependentUpon>201701261600409_SampleMigrations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261603574_SampleMigrations2.resx">
+      <DependentUpon>201701261603574_SampleMigrations2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261621507_SampleMigrations3.resx">
+      <DependentUpon>201701261621507_SampleMigrations3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

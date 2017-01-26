@@ -9,7 +9,6 @@ namespace ORM
     [Table("UserRole")]
     public partial class UserRole
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int RoleId { get; set; }

@@ -15,15 +15,15 @@ namespace BLL.Mappers
            DalUser dalUser = new DalUser
             {
                 id = userEntity.id,
-                City = userEntity.City,
+                //City = userEntity.City,
                 Email = userEntity.Email,
                 Login = userEntity.Login,
                 Password = userEntity.Password,
-                Company = userEntity.Company,
+                /*Company = userEntity.Company,
                 DateOfBirth = userEntity.DateOfBirth,
                 FirstName = userEntity.FirstName,
                 LastName = userEntity.LastName,
-                Phone = userEntity.Phone
+                Phone = userEntity.Phone*/
             };
             return dalUser;
         }
@@ -35,15 +35,15 @@ namespace BLL.Mappers
 
             UserEntity ormUser = new UserEntity
             {
-                City = user.City,
+               // City = user.City,
                 Email = user.Email,
                 Login = user.Login,
                 Password = user.Password,
-                Company = user.Company,
+                /*Company = user.Company,
                 DateOfBirth = user.DateOfBirth,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Phone = user.Phone
+                Phone = user.Phone*/
             };
             return ormUser;
         }

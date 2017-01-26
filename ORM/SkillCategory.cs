@@ -15,7 +15,6 @@ namespace ORM
             Skills = new HashSet<Skill>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]

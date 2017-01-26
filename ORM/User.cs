@@ -15,7 +15,6 @@ namespace ORM
             UserSkills = new HashSet<UserSkill>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]
@@ -30,26 +29,21 @@ namespace ORM
         [StringLength(256)]
         public string Password { get; set; }
 
-        [Required]
         [StringLength(30)]
         public string FirstName { get; set; }
 
-        [Required]
         [StringLength(30)]
         public string LastName { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Company { get; set; }
 
-        [Required]
         [StringLength(11)]
         public string Phone { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string City { get; set; }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interface.DTO;
-using ORM;
+using ORMORM;
 
 namespace DAL.Mappers
 {
@@ -17,16 +17,16 @@ namespace DAL.Mappers
 
             DalUser dalUser = new DalUser
             {
-                id = user.id,
-                City = user.City,
+                //id = user.id,
+                //City = user.City,
                 Email = user.Email,
                 Login = user.Login,
                 Password = user.Password,
-                Company = user.Company,
+                /*Company = user.Company,
                 DateOfBirth = user.DateOfBirth,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Phone = user.Phone
+                Phone = user.Phone*/
             };
             return dalUser;
         }
@@ -37,15 +37,15 @@ namespace DAL.Mappers
 
             User ormUser = new User
             { 
-                City = user.City,
+                //City = user.City,
                 Email = user.Email,
                 Login = user.Login,
                 Password = user.Password,
-                Company = user.Company,
+                /*Company = user.Company,
                 DateOfBirth = user.DateOfBirth,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Phone = user.Phone
+                Phone = user.Phone*/
             };
             return ormUser;
         }

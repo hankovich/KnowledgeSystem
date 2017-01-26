@@ -14,7 +14,6 @@ namespace ORM
             UserSkills = new HashSet<UserSkill>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int SkillCategoryId { get; set; }

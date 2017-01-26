@@ -9,7 +9,8 @@ using BLL.Services;
 using DAL.Interface.Repository;
 using DAL.Repository;
 using DAL;
-using ORM;
+//using ORM;
+using ORMORM;
 using Ninject;
 using Ninject.Web.Common;
 

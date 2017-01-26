@@ -14,7 +14,6 @@ namespace ORM
             UserRoles = new HashSet<UserRole>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]
