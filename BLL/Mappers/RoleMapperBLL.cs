@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Interface.Entities;
 using DAL.Interface.DTO;
-using ORM;
 
-namespace DAL.Mappers
+namespace BLL.Mappers
 {
-    public static class RoleMapper
+    public static class RoleMapperBLL
     {
-        public static DalRole ToDalRole(this Role user)
+        public static DalRole ToDalRole(this RoleEntity user)
         {
-            if (user == null)
-                return null;
-
             DalRole dalRole = new DalRole
             {
                 id = user.id,
@@ -23,9 +20,12 @@ namespace DAL.Mappers
             return dalRole;
         }
 
-        public static Role ToOrmRole(this DalRole user)
+        public static RoleEntity ToBllRole(this DalRole user)
         {
-            Role ormRole = new Role
+            if (user == null)
+                return null;
+
+            RoleEntity ormRole = new RoleEntity
             {
                 Name = user.Name
             };

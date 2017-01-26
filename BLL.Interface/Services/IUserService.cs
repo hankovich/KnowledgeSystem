@@ -15,9 +15,9 @@ namespace BLL.Interface.Services
         UserEntity GetUserEntityByLogin(string login);
         UserEntity GetUserEntityByPredicate(Expression<Func<UserEntity, bool>> f);
         IEnumerable<UserEntity> GetAllUserEntities();
-        void CreateUser(UserEntity user);
-        void DeleteUser(UserEntity user);
-        void UpdateUser(UserEntity user);
+        void CreateUser(UserEntity userEntity);
+        void DeleteUser(UserEntity userEntity);
+        void UpdateUser(UserEntity userEntity);
         void AddRoleToUser(string login, string roleName);
     }
 }

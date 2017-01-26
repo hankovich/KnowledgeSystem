@@ -13,9 +13,9 @@ namespace BLL.Interface.Services
         SkillCategoryEntity GetSkillCategoryEntityById(int id);
         SkillCategoryEntity GetSkillCategoryEntityByPredicate(Expression<Func<SkillCategoryEntity, bool>> f);
         IEnumerable<SkillCategoryEntity> GetAllSkillCategoryEntities();
-        void CreateSkillCategory(SkillCategoryEntity user);
-        void DeleteSkillCategory(SkillCategoryEntity user);
-        void UpdateSkillCategory(SkillCategoryEntity user);
+        void CreateSkillCategory(SkillCategoryEntity skillCategoryEntity);
+        void DeleteSkillCategory(SkillCategoryEntity skillCategoryEntity);
+        void UpdateSkillCategory(SkillCategoryEntity skillCategoryEntity);
         SkillCategoryEntity GetSkillCategoryEntityByName(string categoryName);
     }
 }

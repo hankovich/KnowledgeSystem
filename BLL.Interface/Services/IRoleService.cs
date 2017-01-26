@@ -13,9 +13,9 @@ namespace BLL.Interface.Services
         IEnumerable<RoleEntity> GetAllRoleEntities();
         RoleEntity GetRoleEntityById(int key);
         RoleEntity GetRoleEntityByPredicate(Expression<Func<RoleEntity, bool>> f);
-        void CreateRole(RoleEntity e);
-        void DeleteRole(RoleEntity e);
-        void UpdateRole(RoleEntity entity);
+        void CreateRole(RoleEntity roleEntity);
+        void DeleteRole(RoleEntity roleEntity);
+        void UpdateRole(RoleEntity roleEntity);
         RoleEntity GetRoleEntityByName(string roleName);
         IEnumerable<RoleEntity> GetRoleEntitiesOfUser(int userId);
     }

@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Interface.Entities;
 using DAL.Interface.DTO;
-using ORM;
 
-namespace DAL.Mappers
+namespace BLL.Mappers
 {
-    public static class UserSkillMapper
+    public static class UserSkillMapperBLL
     {
-        public static DalUserSkill ToDalUserSkill(this UserSkill userSkill)
+        public static DalUserSkill ToDalUserSkill(this UserSkillEntity userSkill)
         {
-            if (userSkill == null)
-                return null;
-
             DalUserSkill dalUserSkill = new DalUserSkill
             {
                 id = userSkill.id,
@@ -25,9 +22,12 @@ namespace DAL.Mappers
             return dalUserSkill;
         }
 
-        public static UserSkill ToOrmUserSkill(this DalUserSkill dalUserSkill)
+        public static UserSkillEntity ToBllUserSkill(this DalUserSkill dalUserSkill)
         {
-            UserSkill userSkill = new UserSkill
+            if (dalUserSkill == null)
+                return null;
+
+            UserSkillEntity userSkill = new UserSkillEntity
             {
                 SkillId = dalUserSkill.SkillId,
                 UserId = dalUserSkill.UserId
