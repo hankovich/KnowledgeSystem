@@ -88,13 +88,13 @@ namespace MVC.PL.Controllers
 
             if (anyUserEmail != null)
             {
-                ModelState.AddModelError("", "User with this address already registered.");
+                ModelState.AddModelError("Email", "User with this address already registered.");
                 return View(viewModel);
             }
 
             if (anyUserLogin != null)
             {
-                ModelState.AddModelError("", "User with this login already registered.");
+                ModelState.AddModelError("Login", "User with this login already registered.");
                 return View(viewModel);
             }
 
@@ -105,7 +105,7 @@ namespace MVC.PL.Controllers
                 if (membershipUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

@@ -17,11 +17,12 @@ namespace MVC.PL.Controllers
         }
 
         // GET: Home
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
-
         
         /*
         public ActionResult Index()
