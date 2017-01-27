@@ -37,6 +37,7 @@ namespace DAL.Mappers
 
             User ormUser = new User
             { 
+                Id = user.id,          ///////////////////////////////////////////////////
                 City = user.City,
                 Email = user.Email,
                 Login = user.Login,

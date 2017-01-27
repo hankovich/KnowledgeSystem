@@ -40,13 +40,13 @@ namespace DAL.Repository
             var user = context.Set<User>().FirstOrDefault(n => n.Id == entity.id);
             if (user != null)
             {
-                /*user.City = entity.City;
+                user.City = entity.City;
                 user.Company = entity.Company;
                 user.DateOfBirth = entity.DateOfBirth;
                 user.FirstName = entity.FirstName;
                 user.LastName = entity.LastName;
                 user.Phone = entity.Phone;
-                */user.Email = entity.Email;
+                user.Email = entity.Email;
                 user.Login = entity.Login;
                 user.Password = entity.Password;
             }

@@ -35,6 +35,7 @@ namespace BLL.Mappers
 
             UserEntity ormUser = new UserEntity
             {
+                id = user.id, /////////////////////////////////////////////////////////////////////////////
                 City = user.City,
                 Email = user.Email,
                 Login = user.Login,
