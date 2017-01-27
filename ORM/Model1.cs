@@ -8,15 +8,16 @@ namespace ORM
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=KnowledgeSystem")
+            : base("name=Model1")
         {
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<SkillCategory> SkillCategories { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
-        public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<UserSkill> UserSkills { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -50,25 +51,35 @@ namespace ORM
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Login)
-                .IsUnicode(false);
+                .IsFixedLength();
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Email)
-                .IsUnicode(false);
+                .IsFixedLength();
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Password)
-                .IsUnicode(false);
+                .IsFixedLength();
 
             modelBuilder.Entity<User>()
-                .HasMany(e => e.UserRoles)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.City)
+                .IsFixedLength();
 
             modelBuilder.Entity<User>()
-                .HasMany(e => e.UserSkills)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.FirstName)
+                .IsFixedLength();
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.LastName)
+                .IsFixedLength();
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Company)
+                .IsFixedLength();
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Phone)
+                .IsFixedLength();
         }
     }
 }

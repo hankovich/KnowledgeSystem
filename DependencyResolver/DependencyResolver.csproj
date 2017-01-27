@@ -81,9 +81,9 @@
       <Project>{28777ff6-346a-4a37-aa81-a254d1396f69}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ORMORM\ORMORM.csproj">
-      <Project>{a4195c75-e84a-454f-9f08-379c05b34c94}</Project>
-      <Name>ORMORM</Name>
+    <ProjectReference Include="..\ORM\ORM.csproj">
+      <Project>{0a58b11c-752c-4cfd-8739-7523abbf1a08}</Project>
+      <Name>ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

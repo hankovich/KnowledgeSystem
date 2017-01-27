@@ -10,7 +10,6 @@ namespace ORM.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ORM.Model1";
         }
 
         protected override void Seed(ORM.Model1 context)

@@ -33,8 +33,6 @@ namespace MVC.PL.Models
         [StringLength(30, ErrorMessage = "The login must contain at least {2} characters and no more that 30 characters", MinimumLength = 3)]
         public string Login { get; set; }
 
-        public DateTime DateofBirth { get; set; }
-
         [Required]
         [Display(Name = "Enter the code from the image")]
         public string Captcha { get; set; }

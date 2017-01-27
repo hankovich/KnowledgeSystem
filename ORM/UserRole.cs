@@ -9,6 +9,7 @@ namespace ORM
     [Table("UserRole")]
     public partial class UserRole
     {
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int RoleId { get; set; }
@@ -16,7 +17,5 @@ namespace ORM
         public int UserId { get; set; }
 
         public virtual Role Role { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

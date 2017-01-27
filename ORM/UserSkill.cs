@@ -9,6 +9,7 @@ namespace ORM
     [Table("UserSkill")]
     public partial class UserSkill
     {
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int UserId { get; set; }
@@ -16,7 +17,5 @@ namespace ORM
         public int SkillId { get; set; }
 
         public virtual Skill Skill { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

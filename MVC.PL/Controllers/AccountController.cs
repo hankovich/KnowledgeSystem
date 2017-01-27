@@ -27,31 +27,48 @@ namespace MVC.PL.Controllers
             this.roleService = roleService;
         }
 
-        // GET: Account
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            //var type = HttpContext.User.GetType();
+            //var iden = HttpContext.User.Identity.GetType();
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel viewModel, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                if ((/*(CustomMembershipProvider)*/Membership.Provider).ValidateUser(viewModel.Login, viewModel.Password))
+                //Проверяет учетные данные пользователя и управляет параметрами пользователей
+                {
+                    FormsAuthentication.SetAuthCookie(viewModel.Login, viewModel.RememberMe);
+                    //Управляет службами проверки подлинности с помощью форм для веб-приложений
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Incorrect login/email or password.");
+            }
+            return View(viewModel);
+        }
 
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()
         {
-            roleService.CreateRole(new RoleEntity()
-            {
-                Name = "SUQA"
-            });
-
-            //
-            userService.CreateUser(new UserEntity()
-            {
-                id = 6,
-                Login = "svata",
-                Email = "asd@asd.asd",
-                Password = "BabyEbutMozg16",
-                DateOfBirth = DateTime.Now.Date,
-                City = "Huj",
-                Company = "EPAM",
-                FirstName = "QWE",
-                LastName = "DSA",
-                Phone = "375293112912"
-            });
             return View();
         }
 
@@ -66,11 +83,18 @@ namespace MVC.PL.Controllers
                 return View(viewModel);
             }
 
-            var anyUser = userService.GetUserEntityByEmail(viewModel.Email);
+            var anyUserEmail = userService.GetUserEntityByEmail(viewModel.Email);
+            var anyUserLogin = userService.GetUserEntityByEmail(viewModel.Login);
 
-            if (anyUser != null)
+            if (anyUserEmail != null)
             {
                 ModelState.AddModelError("", "User with this address already registered.");
+                return View(viewModel);
+            }
+
+            if (anyUserLogin != null)
+            {
+                ModelState.AddModelError("", "User with this login already registered.");
                 return View(viewModel);
             }
 

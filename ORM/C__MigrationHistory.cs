@@ -1,4 +1,4 @@
-namespace ORMORM
+namespace ORM
 {
     using System;
     using System.Collections.Generic;

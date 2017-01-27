@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2182758-B701-4560-9AB6-7350A8A1A11C}</ProjectGuid>
+    <ProjectGuid>{0A58B11C-752C-4CFD-8739-7523ABBF1A08}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ORM</RootNamespace>
@@ -66,25 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201701261423439_InitialCreate.cs" />
-    <Compile Include="Migrations\201701261423439_InitialCreate.Designer.cs">
-      <DependentUpon>201701261423439_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261523273_SampleMigrations.cs" />
-    <Compile Include="Migrations\201701261523273_SampleMigrations.Designer.cs">
-      <DependentUpon>201701261523273_SampleMigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261600409_SampleMigrations1.cs" />
-    <Compile Include="Migrations\201701261600409_SampleMigrations1.Designer.cs">
-      <DependentUpon>201701261600409_SampleMigrations1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261603574_SampleMigrations2.cs" />
-    <Compile Include="Migrations\201701261603574_SampleMigrations2.Designer.cs">
-      <DependentUpon>201701261603574_SampleMigrations2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261621507_SampleMigrations3.cs" />
-    <Compile Include="Migrations\201701261621507_SampleMigrations3.Designer.cs">
-      <DependentUpon>201701261621507_SampleMigrations3.cs</DependentUpon>
+    <Compile Include="C__MigrationHistory.cs" />
+    <Compile Include="Migrations\201701270801328_SampleMigrations.cs" />
+    <Compile Include="Migrations\201701270801328_SampleMigrations.Designer.cs">
+      <DependentUpon>201701270801328_SampleMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
@@ -106,6 +91,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
@@ -118,24 +107,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701261423439_InitialCreate.resx">
-      <DependentUpon>201701261423439_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261523273_SampleMigrations.resx">
-      <DependentUpon>201701261523273_SampleMigrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261600409_SampleMigrations1.resx">
-      <DependentUpon>201701261600409_SampleMigrations1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261603574_SampleMigrations2.resx">
-      <DependentUpon>201701261603574_SampleMigrations2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261621507_SampleMigrations3.resx">
-      <DependentUpon>201701261621507_SampleMigrations3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701270801328_SampleMigrations.resx">
+      <DependentUpon>201701270801328_SampleMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -32,7 +32,7 @@ namespace MVC.PL.Providers
                 Email = email,
                 Password = Crypto.HashPassword(password),
                 Login = login,
-                DateOfBirth = DateTime.Now
+                //DateOfBirth = DateTime.Now
                 //http://msdn.microsoft.com/ru-ru/library/system.web.helpers.crypto(v=vs.111).aspx
                 //CreationDate = DateTime.Now
             };
@@ -42,11 +42,18 @@ namespace MVC.PL.Providers
             return membershipUser;
         }
 
-        public override bool ValidateUser(string email, string password)
+        public override bool ValidateUser(string emailOrLogin, string password)
         {
-            var user = UserService.GetUserEntityByEmail(email);
+            var userLogin = UserService.GetUserEntityByLogin(emailOrLogin);
+            var userEmail = UserService.GetUserEntityByEmail(emailOrLogin);
 
-            if (user != null && Crypto.VerifyHashedPassword(user.Password, password))
+            if (userLogin != null && Crypto.VerifyHashedPassword(userLogin.Password, password))
+            //Определяет, соответствуют ли заданный хэш RFC 2898 и пароль друг другу
+            {
+                return true;
+            }
+
+            if (userEmail != null && Crypto.VerifyHashedPassword(userEmail.Password, password))
             //Определяет, соответствуют ли заданный хэш RFC 2898 и пароль друг другу
             {
                 return true;
