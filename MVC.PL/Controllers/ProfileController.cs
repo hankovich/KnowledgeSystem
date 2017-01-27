@@ -30,7 +30,7 @@ namespace MVC.PL.Controllers
                 FirstName = profile.FirstName,
                 LastName = profile.LastName,
                 Company = profile.Company,
-                DateOfBirth = profile.DateOfBirth?.Date ?? profile.DateOfBirth,
+                DateOfBirth = profile.DateOfBirth?.Date.ToShortDateString() ?? string.Empty,//profile.DateOfBirth?.Date ?? profile.DateOfBirth,
                 Phone = profile.Phone
             };
 
@@ -42,23 +42,38 @@ namespace MVC.PL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(ProfileModel model)
         {
-            var user = userService.GetUserEntityByLogin(User.Identity.Name) ?? userService.GetUserEntityByEmail(User.Identity.Name);
-            var t = new UserEntity
+            if (ModelState.IsValid)
             {
-                id = user.id,
-                DateOfBirth = model.DateOfBirth,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Company = model.Company,
-                City = model.City,
-                Phone = model.Phone,
-                Login = user.Login,
-                Email = user.Email,
-                Password = user.Password
-            };
-            userService.UpdateUser(t);
+                var user = userService.GetUserEntityByLogin(User.Identity.Name) ??
+                           userService.GetUserEntityByEmail(User.Identity.Name);
+                DateTime dateOfBirth;
+                bool res = DateTime.TryParse(model.DateOfBirth, out dateOfBirth);
+                if (!res || dateOfBirth.Date > DateTime.Now.Date) // костыли-костылики
+                {
+                    ModelState.AddModelError("DateOfBirth", "You are trying to deceive us");
+                    return View(model);
+                }
 
-            return RedirectToAction("Index", "Home");
+                var t = new UserEntity
+                {
+                    id = user.id,
+                    DateOfBirth = DateTime.Parse(model.DateOfBirth),//model.DateOfBirth?.Date ?? model.DateOfBirth, ////////just a date
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Company = model.Company,
+                    City = model.City,
+                    Phone = model.Phone,
+                    Login = user.Login,
+                    Email = user.Email,
+                    Password = user.Password
+                };
+
+
+                userService.UpdateUser(t);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
         }
     }
 }
