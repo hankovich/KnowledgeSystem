@@ -41,7 +41,6 @@ namespace DAL.Repository
             if (skill != null)
             {
                 skill.SkillCategoryId = entity.SkillCategoryId;
-                skill.SkillLevel = entity.SkillLevel;
                 skill.SkillName = entity.SkillName;
             }
         }
@@ -54,8 +53,14 @@ namespace DAL.Repository
         }
 
         public IEnumerable<DalSkill> GetAllForCategory(int categoryId)
-        {
-            yield return context.Set<Skill>().ToList().FirstOrDefault(skill => skill.SkillCategoryId == categoryId).ToDalSkill();
-        }
+            =>
+                context.Set<Skill>()
+                    .ToList()
+                    .Where(skill => skill.SkillCategoryId == categoryId)
+                    .Select(skill => skill.ToDalSkill());
+
+        //{
+        //  yield return context.Set<Skill>().ToList().FirstOrDefault(skill => skill.SkillCategoryId == categoryId).ToDalSkill();
+        //}
     }
 }

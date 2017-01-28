@@ -27,6 +27,7 @@ namespace BLL.Mappers
 
             RoleEntity ormRole = new RoleEntity
             {
+                id = user.id,
                 Name = user.Name
             };
             return ormRole;

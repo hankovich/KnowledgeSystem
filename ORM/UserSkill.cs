@@ -16,6 +16,8 @@ namespace ORM
 
         public int SkillId { get; set; }
 
+        public int SkillLevel { get; set; }
+
         public virtual Skill Skill { get; set; }
     }
 }

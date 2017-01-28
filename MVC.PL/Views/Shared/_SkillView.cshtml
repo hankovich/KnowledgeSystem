@@ -1,0 +1,12 @@
+﻿@model MVC.PL.Models.SkillCategoryModel
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+    </h3>
+       <ul>
+       @foreach (var item in Model.Skills)
+       {
+           <li>@item.Name</li> 
+       }
+       </ul>
+</div>

@@ -13,7 +13,5 @@ namespace BLL.Interface.Entities
         public int SkillCategoryId { get; set; }
 
         public string SkillName { get; set; }
-
-        public int SkillLevel { get; set; }
     }
 }

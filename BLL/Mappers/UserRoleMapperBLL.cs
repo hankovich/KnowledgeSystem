@@ -29,6 +29,7 @@ namespace BLL.Mappers
 
             UserRoleEntity userRole = new UserRoleEntity
             {
+                id = dalUserRole.id,
                 RoleId = dalUserRole.RoleId,
                 UserId = dalUserRole.UserId
             };

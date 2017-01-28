@@ -13,7 +13,5 @@ namespace DAL.Interface.DTO
         public int SkillCategoryId { get; set; }
 
         public string SkillName { get; set; }
-
-        public int SkillLevel { get; set; }
     }
 }

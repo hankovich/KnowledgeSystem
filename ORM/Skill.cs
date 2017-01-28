@@ -23,8 +23,6 @@ namespace ORM
         [StringLength(30)]
         public string SkillName { get; set; }
 
-        public int SkillLevel { get; set; }
-
         public virtual SkillCategory SkillCategory { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

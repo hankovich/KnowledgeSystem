@@ -28,6 +28,7 @@ namespace BLL.Mappers
 
             SkillCategoryEntity skillCategory = new SkillCategoryEntity
             {
+                id = dalSkillCategory.id,
                 Name = dalSkillCategory.Name
             };
 

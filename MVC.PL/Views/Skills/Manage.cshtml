@@ -1,0 +1,15 @@
+﻿@model IEnumerable<MVC.PL.Models.SkillCategoryModel>
+@{
+    ViewBag.Title = "Manage your skills";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h2>Skills</h2>
+    <table class="table-striped">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_SkillView", item)
+        }
+    </table>
+}

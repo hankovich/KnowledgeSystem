@@ -52,6 +52,6 @@ namespace BLL.Services
 
         public IEnumerable<SkillEntity> GetAllSkillEntitiesForUser(int userId) => skillRepository.GetAllForUser(userId).Select(skill => skill.ToBllSkill());
 
-        public IEnumerable<SkillEntity> GetAllSkillEntitiesForCategory(int categoryId) => skillRepository.GetAllForCategory(categoryId).Select(skill => skill.ToBllSkill());
+        public IEnumerable<SkillEntity> GetAllSkillEntitiesForCategory(int categoryId) => skillRepository.GetAllForCategory(categoryId).ToList().Select(skill => skill.ToBllSkill());
     }
 }

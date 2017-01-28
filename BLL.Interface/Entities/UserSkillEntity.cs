@@ -13,5 +13,7 @@ namespace BLL.Interface.Entities
         public int UserId { get; set; }
 
         public int SkillId { get; set; }
+        
+        public int SkillLevel { get; set; }
     }
 }

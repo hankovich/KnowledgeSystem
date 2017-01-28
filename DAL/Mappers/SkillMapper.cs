@@ -19,7 +19,6 @@ namespace DAL.Mappers
             {
                 id = skill.id,
                 SkillCategoryId = skill.SkillCategoryId,
-                SkillLevel = skill.SkillLevel,
                 SkillName = skill.SkillName
             };
 
@@ -31,7 +30,6 @@ namespace DAL.Mappers
             Skill ormSkill = new Skill
             {
                 SkillCategoryId = skill.SkillCategoryId,
-                SkillLevel = skill.SkillLevel,
                 SkillName = skill.SkillName
             };
 

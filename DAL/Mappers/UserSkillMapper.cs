@@ -19,7 +19,8 @@ namespace DAL.Mappers
             {
                 id = userSkill.id,
                 SkillId = userSkill.SkillId,
-                UserId = userSkill.UserId
+                UserId = userSkill.UserId,
+                SkillLevel = userSkill.SkillLevel
             };
 
             return dalUserSkill;
@@ -30,7 +31,8 @@ namespace DAL.Mappers
             UserSkill userSkill = new UserSkill
             {
                 SkillId = dalUserSkill.SkillId,
-                UserId = dalUserSkill.UserId
+                UserId = dalUserSkill.UserId,
+                SkillLevel = dalUserSkill.SkillLevel
             };
 
             return userSkill;

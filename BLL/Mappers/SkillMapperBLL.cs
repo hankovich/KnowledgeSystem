@@ -16,7 +16,6 @@ namespace BLL.Mappers
             {
                 id = skill.id,
                 SkillCategoryId = skill.SkillCategoryId,
-                SkillLevel = skill.SkillLevel,
                 SkillName = skill.SkillName
             };
 
@@ -30,8 +29,8 @@ namespace BLL.Mappers
 
             SkillEntity ormSkill = new SkillEntity
             {
+                id = skill.id,
                 SkillCategoryId = skill.SkillCategoryId,
-                SkillLevel = skill.SkillLevel,
                 SkillName = skill.SkillName
             };
 

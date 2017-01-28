@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Knowledge System</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -35,6 +38,28 @@
             <p>&copy; @DateTime.Now.Year - Knowledge System</p>
         </footer>
     </div>
+
+
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-6 footer-left">
+                <h3>Information</h3>
+                <p class="para">
+                    If you have any troubles with application functionality, please contact administrator, and we try to do all possible for solving your problems.
+                </p>
+            </div>
+            <div class="col-md-6 footer-right">
+                <h3>Contact Us</h3>
+                <ul class="con-icons">
+                    <li><span class="glyphicon glyphicon-phone" aria-hidden="true"></span>+123 456 7890</li>
+                    <li><a href="mailto:info@example.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>info@example.com</a></li>
+                </ul>
+            </div>
+        </div>
+</div>
+
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
