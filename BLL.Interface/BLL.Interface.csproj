@@ -51,6 +51,7 @@
     <Compile Include="Services\ISkillCategoryService.cs" />
     <Compile Include="Services\ISkillService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\IUserSkillService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

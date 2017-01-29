@@ -48,8 +48,7 @@ namespace DAL.Repository
         public IEnumerable<DalSkill> GetAllForUser(int userId)
         {
             var skillIds = context.Set<UserSkill>().Where(userSkill => userSkill.UserId == userId).Select(userSkill => userSkill.SkillId);
-            foreach (var roleId in skillIds)
-                yield return context.Set<Skill>().ToList().FirstOrDefault(role => role.id == roleId).ToDalSkill();
+            return context.Set<Skill>().ToList().Where(skill => skillIds.Contains(skill.id)).Select(skill => skill.ToDalSkill());
         }
 
         public IEnumerable<DalSkill> GetAllForCategory(int categoryId)

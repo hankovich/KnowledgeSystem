@@ -51,6 +51,9 @@ namespace DependencyResolver
 
             kernel.Bind<ISkillService>().To<SkillService>();
             kernel.Bind<ISkillRepository>().To<SkillRepository>();
+
+            kernel.Bind<IUserSkillService>().To<UserSkillService>();
+            kernel.Bind<IUserSkillRepository>().To<UserSkillRepository>();
         }
     }
 }

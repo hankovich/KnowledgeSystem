@@ -60,6 +60,7 @@
     <Compile Include="Repository\SkillCategoryRepository.cs" />
     <Compile Include="Repository\SkillRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\UserSkillRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,7 @@
     <Compile Include="Repository\ISkillRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\IUserSkillRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ORM\ORM.csproj">

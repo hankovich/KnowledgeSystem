@@ -14,12 +14,14 @@ namespace MVC.PL.Controllers
         private readonly IUserService userService;
         private readonly ISkillService skillService;
         private readonly ISkillCategoryService skillCategoryService;
+        private readonly IUserSkillService userSkillService;
 
-        public SkillsController(IUserService userService, ISkillService skillService, ISkillCategoryService skillCategoryService)
+        public SkillsController(IUserService userService, ISkillService skillService, ISkillCategoryService skillCategoryService, IUserSkillService userSkillService)
         {
             this.userService = userService;
             this.skillService = skillService;
             this.skillCategoryService = skillCategoryService;
+            this.userSkillService = userSkillService;
         }
 
         [Authorize]
@@ -35,10 +37,44 @@ namespace MVC.PL.Controllers
                 Skills = skillService.GetAllSkillEntitiesForCategory(sc.id).Select(skill => new SkillModel
                 {
                     Id = skill.id,
-                    Name = skill.SkillName
+                    Name = skill.SkillName,
+                    Level = userSkillService.GetLevelOfSkillForUserEntity(user.id, skill.id)
                 }),
             });
             return View(model);
+        }
+
+
+        public ActionResult RateProduct(int id, int rate)
+        {
+            var user = userService.GetUserEntityByLogin(User.Identity.Name) ??
+                          userService.GetUserEntityByEmail(User.Identity.Name);
+
+            bool success = true;
+            string error = "";
+            int userSkillId = userSkillService.GetUserSkillEntityByPredicate(userSkill => userSkill.SkillId == id && userSkill.UserId == user.id)?.id ?? 0;
+            if (userSkillId != 0)
+            {
+                userSkillService.UpdateUserSkill(new UserSkillEntity
+                {
+                    id = userSkillId,
+                    SkillId = id,
+                    SkillLevel = rate,
+                    UserId = user.id
+                });
+            }
+            else
+            {
+                userSkillService.CreateUserSkill(new UserSkillEntity
+                {
+                    id = userSkillId,
+                    SkillId = id,
+                    SkillLevel = rate,
+                    UserId = user.id
+                });
+            }
+
+            return Json(new { error = error, success = success, pid = id }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

@@ -1,12 +1,39 @@
 ﻿@model MVC.PL.Models.SkillCategoryModel
-<div class="well">
-    <h3>
-        <strong>@Model.Name</strong>
-    </h3>
-       <ul>
-       @foreach (var item in Model.Skills)
-       {
-           <li>@item.Name</li> 
-       }
-       </ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="single">
+
+        <h3>
+            <strong>@Model.Name</strong>
+        </h3>
+        <ul>
+            @foreach (var item in Model.Skills)
+            {
+                <li>
+                    <ul class="list-inline">
+                        <li>
+                            <span class="skills">@item.Name</span>
+                        </li>
+                        <li>
+                            <div class="tab-content">
+                                <div class="ratting-item" data-pid="@item.Id">
+                                    @for (int i = 1; i < 6; i++)
+                                    {
+                                        if (item.Level == i)
+                                        {
+                                            <input class="rating" name="@item.Id" type="radio" value="@i" checked="checked"/>
+                                        }
+                                        else
+                                        {
+                                            <input class="rating" name="@item.Id" type="radio" value="@i"/>
+                                        }
+                                    }
+                                </div>
+                                <span class="result"></span>                             
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
 </div>

@@ -13,5 +13,8 @@ namespace MVC.PL.Models
 
         [Display(Name = "Skill name")]
         public string Name { get; set; } 
+
+        [Display(Name = "Skill level")]
+        public int Level { get; set; }
     }
 }

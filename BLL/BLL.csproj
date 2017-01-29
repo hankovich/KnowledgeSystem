@@ -51,6 +51,7 @@
     <Compile Include="Services\SkillCategoryService.cs" />
     <Compile Include="Services\SkillService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\UserSkillService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

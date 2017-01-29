@@ -3,13 +3,84 @@
     ViewBag.Title = "Manage your skills";
 }
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <h2>Skills</h2>
-    <table class="table-striped">
-        @foreach (var item in Model)
-        {
-            @Html.Partial("_SkillView", item)
-        }
-    </table>
-}
+<link href="@Url.Content("~/Content/rating.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/rating.js")"></script>
+
+<h2>Skills</h2>
+<div class="row">
+    <div class="col-md-6" id="left">
+        <table class="table-striped">
+            @foreach (var item in Model)
+            {
+                @Html.Partial("_SkillView", item)
+            }
+        </table>
+    </div>
+    <div class="col-md-6" id="right">
+        <div class="skills">
+            <h3><strong>Skill level description</strong></h3>
+
+            <div class="legend-item" data-pid="legend">
+                <input class="rating" name="vote" type="radio" value="1"/>
+                <input class="rating" name="vote" type="radio" value="2"/>
+                <input class="rating" name="vote" type="radio" value="3"/>
+                <input class="rating" name="vote" type="radio" value="4"/>
+                <input class="rating" name="vote" type="radio" value="5"/>
+            </div>
+            <br/>
+            Choose level to get detailed info
+            <br/>
+            <br/>
+            <p id="demo"></p>
+            <span class="legend-result"></span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.legend-item').rating(function (vote, event) {
+        document.getElementById("demo").text = "";
+        var votes = ["<ul><li>have some theoretical knowledge</li></ul>",
+                     "<ul><li>have good theoretical knowledge</li><li>have practical skills</li></ul>",
+                     "<ul><li>have perfect theoretical knowledge</li><li>have practical skills</li><li>have more than a year of working experience</li></ul>",
+                     "<ul><li>have expert theoretical knowledge</li><li>have practical skills</li><li>have more than 3 years of working experience</li><li>completed at least 2 major projects with key requirement for the skill</li></ul>",
+                     "<ul><li>have expert theoretical knowledge</li><li>have expert practical skills</li><li>have more than 5 years of working experience</li><li>completed at least 5 major projects with key requirement for the skill</li></ul>"];
+        document.getElementById("demo").innerHTML = "Choose this level if you:" + votes[vote-1];
+    });
+</script>
+<script>
+    $('.ratting-item').rating(function(vote, event) {
+        var anchor = $(event.currentTarget),
+            pid = anchor.closest(".ratting-item").data("pid"),
+            url = '@Url.Action("RateProduct", "Skills")';
+
+        $('.ratting-item[data-pid=' + pid + ']')
+            .next()
+            .text("Placing your vote...");
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: { rate: vote, id: pid },
+            success: function(data) {
+
+                if (data.success) {
+                    $('.ratting-item[data-pid=' + data.pid + ']')
+                        .next()
+                        .text("Voted! (product id: " + data.pid + ")");
+                } else {
+                    $('.ratting-item[data-pid=' + data.pid + ']')
+                        .next()
+                        .text("Something went wrong...");
+                }
+            },
+            error: function(err) {
+                $('.result').text(err);
+            },
+            complete: function() {
+            }
+        });
+    });
+
+</script>
