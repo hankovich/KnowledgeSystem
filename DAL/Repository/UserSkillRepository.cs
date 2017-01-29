@@ -52,5 +52,26 @@ namespace DAL.Repository
                 .FirstOrDefault(userSkill => userSkill.SkillId == skillId && userSkill.UserId == userId)?
                 .SkillLevel ?? 0;
         }
+
+        public void RemoveSkillFromUser(int userId, int skillId)
+        {
+            var skillForDelete = context.Set<UserSkill>().FirstOrDefault(userSkill => userSkill.SkillId == skillId && userSkill.UserId == userId);
+            if (skillForDelete != null)
+            {
+                context.Set<UserSkill>().Remove(skillForDelete);
+            }
+        }
+
+        public void RemoveAllUserSkills(int userId)
+        {
+            var skillsForDelete = context.Set<UserSkill>().Where(userSkill => userSkill.UserId == userId);
+            if (skillsForDelete != null)
+            {
+                foreach (var skillForDelete in skillsForDelete)
+                {
+                    context.Set<UserSkill>().Remove(skillForDelete);
+                }
+            }
+        }
     }
 }

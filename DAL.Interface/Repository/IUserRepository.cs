@@ -12,5 +12,7 @@ namespace DAL.Interface.Repository
         void AddRoleToUser(string login, string roleName);
         DalUser GetByEmail(string email);
         DalUser GetByLogin(string login);
+        void RemoveRoleFromUser(int userId, int roleId);
+        void RemoveAllRolesFromUser(int userId);
     }
 }

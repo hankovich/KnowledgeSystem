@@ -19,5 +19,8 @@ namespace BLL.Interface.Services
         void DeleteUser(UserEntity userEntity);
         void UpdateUser(UserEntity userEntity);
         void AddRoleToUser(string login, string roleName);
+
+        void RemoveRoleFromUser(int userId, int roleId);
+        void RemoveAllRolesFromUser(int userId);
     }
 }

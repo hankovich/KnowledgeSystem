@@ -8,6 +8,13 @@ else
     <li>
         @Html.ActionLink("Hello, " + User.Identity.Name + "!", "Index", "Profile", routeValues: null, htmlAttributes: new {title = "Manage"})
     </li>
-    <li><a href="@Url.Action("Manage", "Skills")"><span class="glyphicon glyphicon-manage-skills"></span>My Skills</a></li>
+    if (User.IsInRole("user"))
+    {
+         <li><a href="@Url.Action("Manage", "Skills")"><span class="glyphicon glyphicon-manage-skills"></span>My Skills</a></li>
+    }
+    if (User.IsInRole("administrator"))
+    {
+        <li><a href="@Url.Action("Index", "Admin")"><span class="glyphicon glyphicon-manage-skills"></span>Admin page</a></li>
+    }
     <li><a href="@Url.Action("LogOff", "Account")"><span class="glyphicon glyphicon-log-off"></span>Log Off</a></li>
 }

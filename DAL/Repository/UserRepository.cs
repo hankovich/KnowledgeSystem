@@ -67,5 +67,26 @@ namespace DAL.Repository
         public DalUser GetByEmail(string email) => context.Set<User>().FirstOrDefault(n => n.Email == email)?.ToDalUser();
 
         public DalUser GetByLogin(string login) => context.Set<User>().FirstOrDefault(n => n.Login == login)?.ToDalUser();
+
+        public void RemoveRoleFromUser(int userId, int roleId)
+        {
+            var roleForDelete = context.Set<UserRole>().FirstOrDefault(userRole => userRole.UserId == userId && userRole.RoleId == roleId);
+            if (roleForDelete != null)
+            {
+                context.Set<UserRole>().Remove(roleForDelete);
+            }
+        }
+
+        public void RemoveAllRolesFromUser(int userId)
+        {
+            var rolesForDelete = context.Set<UserRole>().Where(userRole => userRole.UserId == userId);
+            if (rolesForDelete != null)
+            {
+                foreach (var roleForDelete in rolesForDelete)
+                {
+                    context.Set<UserRole>().Remove(roleForDelete);
+                }
+            }
+        }
     }
 }

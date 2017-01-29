@@ -17,5 +17,8 @@ namespace BLL.Interface.Services
         void DeleteUserSkill(UserSkillEntity skillCategoryEntity);
         void UpdateUserSkill(UserSkillEntity skillCategoryEntity);
         int GetLevelOfSkillForUserEntity(int userId, int skillId);
+
+        void RemoveSkillFromUser(int userId, int skillId);
+        void RemoveAllUserSkills(int userId);
     }
 }

@@ -44,7 +44,7 @@ namespace MVC.PL.Controllers
             return View(model);
         }
 
-
+        [Authorize]
         public ActionResult RateProduct(int id, int rate)
         {
             var user = userService.GetUserEntityByLogin(User.Identity.Name) ??

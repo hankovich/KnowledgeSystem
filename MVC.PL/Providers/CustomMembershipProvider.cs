@@ -38,6 +38,8 @@ namespace MVC.PL.Providers
             };
 
             UserService.CreateUser(user);
+            UserService.AddRoleToUser(login, "user");
+
             membershipUser = GetUser(email, false);
             return membershipUser;
         }

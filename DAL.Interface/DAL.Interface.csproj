@@ -56,12 +56,6 @@
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\IUserSkillRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ORM\ORM.csproj">
-      <Project>{0a58b11c-752c-4cfd-8739-7523abbf1a08}</Project>
-      <Name>ORM</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

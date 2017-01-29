@@ -18,7 +18,7 @@ namespace MVC.PL.Providers
 
         public override bool IsUserInRole(string login, string roleName)
         {
-            UserEntity user = UserService.GetUserEntityByLogin(login);
+            UserEntity user = UserService.GetUserEntityByLogin(login) ?? UserService.GetUserEntityByEmail(login);
 
             if (user == null) return false;
 
@@ -35,7 +35,7 @@ namespace MVC.PL.Providers
 
         public override string[] GetRolesForUser(string login)
         {
-            UserEntity user = UserService.GetUserEntityByLogin(login);
+            UserEntity user = UserService.GetUserEntityByLogin(login) ?? UserService.GetUserEntityByEmail(login);
             if (user != null)
             {
                 var userRoles = RoleService.GetRoleEntitiesOfUser(user.id).ToList().Select(role => role.Name).ToList();

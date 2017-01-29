@@ -59,5 +59,17 @@ namespace BLL.Services
             userRepository.AddRoleToUser(login, roleName);
             uow.Commit();
         }
+
+        public void RemoveRoleFromUser(int userId, int roleId)
+        {
+            userRepository.RemoveRoleFromUser(userId, roleId);
+            uow.Commit();
+        }
+
+        public void RemoveAllRolesFromUser(int userId)
+        {
+            userRepository.RemoveAllRolesFromUser(userId);
+            uow.Commit();
+        }
     }
 }

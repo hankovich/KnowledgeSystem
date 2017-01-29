@@ -55,5 +55,17 @@ namespace BLL.Services
         {
             return userSkillRepository.GetLevelOfSkillForUser(userId, skillId);
         }
+
+        public void RemoveSkillFromUser(int userId, int skillId)
+        {
+            userSkillRepository.RemoveSkillFromUser(userId, skillId);
+            uow.Commit();
+        }
+
+        public void RemoveAllUserSkills(int userId)
+        {
+            userSkillRepository.RemoveAllUserSkills(userId);
+            uow.Commit();
+        }
     }
 }

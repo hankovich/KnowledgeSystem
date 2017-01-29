@@ -1,0 +1,87 @@
+﻿@model MVC.PL.Models.UserRoleModel
+<div class="well">
+    <div class="row">
+        <div class="col-md-4">@Model.Email</div>
+        <div class="col-md-3">@Model.Login</div>
+        <div class="col-md-3">
+            <ul>
+                @foreach (var role in Model.Roles)
+                {
+                    <li name=@Model.id>
+                        <div class="tab-content">@role</div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <style>.btn-space .btn { margin-bottom: 5px; }</style>
+            @if (!User.Identity.Name.Contains(Model.Email) && !User.Identity.Name.Contains(Model.Login) && !Model.Login.Contains(User.Identity.Name) && !Model.Email.Contains(User.Identity.Name))
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="btn-space">
+                            <button type="button" class="btn btn-danger btn-lg btn-block btn-space" data-toggle="modal" data-target="#@Model.id">Delete account</button>
+                            <div id="@Model.id" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Are you sure that you wan't delete @Model.Login's account?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            @Html.ActionLink("Delete", "Delete", "Admin", new {userId = Model.id}, new {@class = "btn btn-danger pull-right btn-lg"})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-lg btn-block btn-space" data-toggle="modal" data-target="#@Model.id-Role">Manage roles</button>
+                            <div id="@Model.id-Role" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Role settings fro @Model.Login account</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                           @foreach (var role in Model.Roles)
+                                           {
+                                               //using(Ajax.BeginForm("RemoveRole", "Admin", new AjaxOptions{HttpMethod = "Post", OnSuccess = "RemoveRole"}))
+                                               {
+                                                   @Ajax.ActionLink($"Remove {@role} rights", "RemoveRole", "Admin", new {userId = Model.id, roleName = role}, new AjaxOptions {HttpMethod = "Get", /* OnSuccess = "function (response) {window.location.href = response.Url;}"*/}, new {@class = "btn btn-danger btn-lg btn-block btn-space"})
+                                                   
+
+                                                   //<button type="button" class="btn btn-danger btn-lg btn-block btn-space" data-toggle="modal" data-target="#@Model.id-Remove">Remove @role rights</button>
+                                               }
+                                           }
+                                            @foreach (var role in Model.AllRoles.Except(Model.Roles))
+                                            {
+                                                //using (@Ajax.BeginForm("AddRole", "Admin", new {userId = Model.id, roleName = role}, new AjaxOptions {HttpMethod = "Get" /*, OnSuccess = "KOALA"*/}))
+                                                //{
+                                                //    <button type="button" class="btn btn-info btn-lg btn-block btn-space" style="margin-bottom: 5px" data-toggle="modal" data-target="#@Model.id-Add-@role">Add @role rights</button>
+                                                //}
+                                                //@Ajax.BeginForm("", "", "", )
+                                                @Ajax.ActionLink($"Add {@role} rights", "AddRole", "Admin", new {userId = Model.id, roleName = role}, new AjaxOptions {HttpMethod = "Get", /* OnSuccess = "function (response) {window.location.href = response.Url;}"*/}, new {@class = "btn btn-info btn-lg btn-block btn-space"})
+                                                ;
+                                                //using (Ajax.BeginForm("AddRole", "Admin", new AjaxOptions { HttpMethod = "Post"/*, OnSuccess = "AddRole"*/}))
+                                                //{
+                                                //  <button type="button" userId=@Model.id roleName=@role class="btn btn-info btn-lg btn-block btn-space" data-toggle="modal" data-target="#@Model.id-Remove">Add @role rights</button>
+                                                //}
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+   function KOALA(result) {
+       window.location.href = result.Url;
+   }
+</script>
