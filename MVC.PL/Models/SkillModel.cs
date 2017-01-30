@@ -16,5 +16,7 @@ namespace MVC.PL.Models
 
         [Display(Name = "Skill level")]
         public int Level { get; set; }
+
+        public int CategoryId { get; set; }
     }
 }

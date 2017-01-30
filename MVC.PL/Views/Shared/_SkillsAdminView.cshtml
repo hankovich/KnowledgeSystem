@@ -1,0 +1,42 @@
+﻿@model MVC.PL.Models.AdminModel
+<div id="AllSkills">
+    <div class="container">
+        <div>
+            <h3>Manage skills and categories</h3>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#CategoryAdd">Add category</button>
+                </div>
+                <div id="CategoryAdd" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Enter the name of category you wan't to add.</h4>
+                                <div id="AddCategoryError"></div>
+                            </div>
+                            <div class="modal-footer">
+                                @using (@Ajax.BeginForm("AddCategory", "Admin", new AjaxOptions {UpdateTargetId = "resultsForAddedModel", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "CloseAddCategory"}))
+                                {
+                                    <input type="text" name="categoryName" id="AddCategoryName" class="pull-left"/>
+                                    <input type="submit" name="saveButton" value="Go" class="btn btn-info btn-md pull-right">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        @foreach (var p in Model.skills)
+        {
+            @Html.Partial("_SkillAdminView", p)
+        }
+        <div id="resultsForAddedModel"></div>
+    </div>
+</div>

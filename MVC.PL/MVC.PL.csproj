@@ -171,6 +171,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\rating.js" />
     <Content Include="Web.config">
@@ -226,6 +228,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_UserView.cshtml" />
     <Content Include="Views\Shared\_SkillAdminView.cshtml" />
+    <Content Include="Views\Shared\_UsersView.cshtml" />
+    <Content Include="Views\Shared\_SkillsAdminView.cshtml" />
+    <Content Include="Views\Shared\_SingleSkillAdminView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

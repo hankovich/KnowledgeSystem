@@ -1,0 +1,11 @@
+﻿@model MVC.PL.Models.AdminModel
+
+<div id="All">
+    <h3>Manage Users</h3>
+    @foreach (var item in Model.userRole)
+    {
+        <div id="@item.id-ManageRights">
+            @Html.Partial("_UserView", item)
+        </div>
+    }
+</div>

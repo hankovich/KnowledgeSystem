@@ -1,0 +1,49 @@
+﻿@model MVC.PL.Models.SkillModel
+<div id="@Model.Id-One">
+    <div class="container">
+        <div class="well">
+            <div class="col-md-6">
+                <span class="skills">@Model.Name</span>
+            </div>
+            <div class="col-md-3">
+                <div id="@Model.Id-SkillsRename" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Enter new name for @Model.Name skill</h4>
+                            </div>
+                            <div class="modal-footer">
+                                @using (@Ajax.BeginForm("RenameSkill", "Admin", new { skillName = @Model.Name }, new AjaxOptions { UpdateTargetId = $"{@Model.Id}-One", InsertionMode = InsertionMode.Replace, OnBegin = "CloseModal" }))
+                                {
+                                    <input type="text" name="newSkillName" id="AddCategoryName" class="pull-left" />
+                                    <input type="submit" name="saveButton" value="Go" class="btn btn-info pull-right btn-lg">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info btn-md btn-block" data-toggle="modal" data-target="#@Model.Id-SkillsRename">Rename skill</button>
+            </div>
+            <div class="col-md-3">
+                <div id="@Model.Id-SkillsDelete" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Do you wan't to delete @Model.Name skill?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                @using (@Ajax.BeginForm("DeleteSkill", "Admin", new { skillName = @Model.Name }, new AjaxOptions { UpdateTargetId = $"{@Model.CategoryId}-SkillsCategory", InsertionMode = InsertionMode.Replace, OnBegin = "CloseModal" }))
+                                {
+                                    <input type="submit" name="saveButton" value="Delete" class="btn btn-danger pull-right btn-lg">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#@Model.Id-SkillsDelete">Delete skill</button>
+            </div>
+        </div>
+    </div>
+</div>
