@@ -231,6 +231,7 @@
     <Content Include="Views\Shared\_UsersView.cshtml" />
     <Content Include="Views\Shared\_SkillsAdminView.cshtml" />
     <Content Include="Views\Shared\_SingleSkillAdminView.cshtml" />
+    <Content Include="Views\Shared\_StatisticsView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

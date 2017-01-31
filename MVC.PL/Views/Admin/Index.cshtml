@@ -18,11 +18,7 @@
             @Html.Partial("_SkillsAdminView", Model)
         </div>
         <div class="tab-pane" id="statistics">
-            <h3>Generate otchety</h3>
-            @foreach (var p in Model.skills)
-            {
-                @Html.Partial("_SkillAdminView", p)
-            }
+            @Html.Partial("_StatisticsView", Model)
         </div>
     </div>
 

@@ -215,5 +215,11 @@ namespace MVC.PL.Controllers
             }
             return PartialView("_SkillAdminView");
         }
+
+        [Authorize(Roles = "administrator")]
+        public ActionResult UpdateStatistics()
+        {
+            return PartialView("_StatisticsView", GenerateModel());
+        }
     }
 }

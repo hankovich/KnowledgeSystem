@@ -1,0 +1,48 @@
+﻿@model MVC.PL.Models.AdminModel
+<div class="statistics">
+    <h3>Statistics</h3>
+    @using (@Ajax.BeginForm("UpdateStatistics", "Admin", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "statistics"}))
+    {
+        <button type="submit" class="btn btn-primary btn-lg btn-block btn-space">Update</button>
+    }
+    <br/>
+    <div class="well">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    Categories in base: @Model.skills.Count()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    Skills in base: @Model.skills.Sum(skillCategory => skillCategory.Skills.Count())
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    Users in base: @Model.userRole.Count()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    Users in base: @Model.userRole.Count()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
