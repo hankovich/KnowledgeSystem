@@ -39,48 +39,56 @@
 
 
 <script>
+
     $('.legend-item').rating(function (vote, event) {
-        document.getElementById("demo").text = "";
-        var votes = ["<ul><li>have some theoretical knowledge</li></ul>",
-                     "<ul><li>have good theoretical knowledge</li><li>have practical skills</li></ul>",
-                     "<ul><li>have perfect theoretical knowledge</li><li>have practical skills</li><li>have more than a year of working experience</li></ul>",
-                     "<ul><li>have expert theoretical knowledge</li><li>have practical skills</li><li>have more than 3 years of working experience</li><li>completed at least 2 major projects with key requirement for the skill</li></ul>",
-                     "<ul><li>have expert theoretical knowledge</li><li>have expert practical skills</li><li>have more than 5 years of working experience</li><li>completed at least 5 major projects with key requirement for the skill</li></ul>"];
-        document.getElementById("demo").innerHTML = "Choose this level if you:" + votes[vote-1];
+          document.getElementById("demo").text = "";
+          var votes = [
+              "<ul><li>have some theoretical knowledge</li></ul>",
+              "<ul><li>have good theoretical knowledge</li><li>have practical skills</li></ul>",
+              "<ul><li>have perfect theoretical knowledge</li><li>have practical skills</li><li>have more than a year of working experience</li></ul>",
+              "<ul><li>have expert theoretical knowledge</li><li>have practical skills</li><li>have more than 3 years of working experience</li><li>completed at least 2 major projects with key requirement for the skill</li></ul>",
+              "<ul><li>have expert theoretical knowledge</li><li>have expert practical skills</li><li>have more than 5 years of working experience</li><li>completed at least 5 major projects with key requirement for the skill</li></ul>"
+          ];
+          document.getElementById("demo").innerHTML = "Choose this level if you:" + votes[vote - 1];
+      });
+     
+    $(function() {
+        function Init() {
+
+            $('.ratting-item').rating(function(vote, event) {
+                var anchor = $(event.currentTarget),
+                    pid = anchor.closest(".ratting-item").data("pid"),
+                    url = '@Url.Action("RateProduct", "Skills")';
+
+                $('.ratting-item[data-pid=' + pid + ']')
+                    .next()
+                    .text("Saving...");
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: { rate: vote, id: pid },
+                    success: function(data) {
+
+                        if (data.success) {
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("");
+                        } else {
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("Something went wrong...");
+                        }
+                    },
+                    error: function(err) {
+                        $('.result').text(err);
+                    },
+                    complete: function() {
+                    }
+                });
+            });
+        };
+
+        Init();
     });
-</script>
-<script>
-    $('.ratting-item').rating(function(vote, event) {
-        var anchor = $(event.currentTarget),
-            pid = anchor.closest(".ratting-item").data("pid"),
-            url = '@Url.Action("RateProduct", "Skills")';
-
-        $('.ratting-item[data-pid=' + pid + ']')
-            .next()
-            .text("Placing your vote...");
-
-        $.ajax({
-            url: url,
-            type: "GET",
-            data: { rate: vote, id: pid },
-            success: function(data) {
-
-                if (data.success) {
-                    $('.ratting-item[data-pid=' + data.pid + ']')
-                        .next()
-                        .text("Voted! (product id: " + data.pid + ")");
-                } else {
-                    $('.ratting-item[data-pid=' + data.pid + ']')
-                        .next()
-                        .text("Something went wrong...");
-                }
-            },
-            error: function(err) {
-                $('.result').text(err);
-            },
-            complete: function() {
-            }
-        });
-    });
-
 </script>

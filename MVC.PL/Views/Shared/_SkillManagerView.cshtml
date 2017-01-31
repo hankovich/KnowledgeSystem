@@ -5,10 +5,11 @@
         <h3>
             <strong>@Model.Name</strong>
         </h3>
-        <ul style="list-style-type: none">
+        <ul style="list-style-type:none">
             @foreach (var item in Model.Skills)
             {
                 <li style="margin-bottom: 2px">
+
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
@@ -17,25 +18,38 @@
                             <div class="col-md-4">
                                 <div class="tab-content">
                                     <div class="ratting-item" data-pid="@item.Id" id="@item.Id-rate">
-
-
                                         @for (int i = 1; i < 6; i++)
                                         {
                                             if (item.Level == i)
                                             {
-                                                <input class="rating" name="@item.Id" type="radio" value="@i" checked="checked"/>
+                                                <input class="rating" name="@item.Id" type="radio" value="@i" checked="checked" />
                                             }
                                             else
                                             {
-                                                <input class="rating" name="@item.Id" type="radio" value="@i"/>
+                                                <input class="rating" name="@item.Id" type="radio" value="@i" />
                                             }
                                         }
                                     </div>
                                     <span class="result"></span>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="reset">
+                                    <button type="button" class="btn btn-primary btn-xs btn-space" onclick="Reset(@item.Id);">Reset</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <script>
+                        function resetButton(a) {
+                            var result = "";
+                            for (var i = 1; i < 6; i++) {
+                                result += '<input class="rating" name="' + a + '" type="radio" value="' + i + '"/>';
+                            }
+                            document.getElementById(a + '-rate').innerHTML = result;
+                        }
+                    </script>
+
                 </li>
             }
         </ul>

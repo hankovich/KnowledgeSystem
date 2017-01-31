@@ -13,12 +13,16 @@ namespace MVC.PL.Models
 
         [Required(ErrorMessage = "The field can not be empty!")]
         [Display(Name = "Enter your first name")]
-        [StringLength(30, ErrorMessage = "The fisrt name must contain at least {2} characters and no more that 30 characters", MinimumLength = 3)]
+        [StringLength(30,
+            ErrorMessage = "The fisrt name must contain at least {2} characters and no more that 30 characters",
+            MinimumLength = 3)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "The field can not be empty!")]
         [Display(Name = "Enter your last name")]
-        [StringLength(30, ErrorMessage = "The last name must contain at least {2} characters and no more that 30 characters", MinimumLength = 3)]
+        [StringLength(30,
+            ErrorMessage = "The last name must contain at least {2} characters and no more that 30 characters",
+            MinimumLength = 3)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "The field can not be empty!")]
@@ -32,7 +36,9 @@ namespace MVC.PL.Models
 
         [Required(ErrorMessage = "The field can not be empty!")]
         [Display(Name = "Enter your place of work/study")]
-        [StringLength(50, ErrorMessage = "The company name must contain at least {2} characters and no more that 50 characters", MinimumLength = 2)]
+        [StringLength(50,
+            ErrorMessage = "The company name must contain at least {2} characters and no more that 50 characters",
+            MinimumLength = 2)]
         public string Company { get; set; }
 
         [Required(ErrorMessage = "The field can not be empty!")]
@@ -42,7 +48,12 @@ namespace MVC.PL.Models
 
         [Required(ErrorMessage = "The field can not be empty!")]
         [Display(Name = "Enter your city of residence")]
-        [StringLength(20, ErrorMessage = "The login must contain at least {2} characters and no more that 20 characters", MinimumLength = 2)]
+        [StringLength(20, ErrorMessage = "The login must contain at least {2} characters and no more that 20 characters",
+            MinimumLength = 2)]
         public string City { get; set; }
+
+        //
+        public string Email { get; set; }
+        public string Login { get; set; }
     }
 }

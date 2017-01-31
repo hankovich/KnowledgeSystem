@@ -1,0 +1,70 @@
+﻿@using Newtonsoft.Json
+@model MVC.PL.Models.ManagerModel
+@{
+    ViewBag.Title = "Search";
+}
+
+
+<link href="@Url.Content("~/Content/rating.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/rating.js")"></script>
+
+<div id="replaceAllManager">
+    @Html.Partial("_ManagerUpdateView", Model)
+</div>
+
+<script>
+    //$(function() {
+        function Init() {
+            $('.ratting-item').rating(function(vote, event) {
+                var anchor = $(event.currentTarget),
+                    pid = anchor.closest(".ratting-item").data("pid"),
+                    url = '@Url.Action("RateSkill", "Manager")';
+
+                $('.ratting-item[data-pid=' + pid + ']')
+                    .next()
+                    .text("");
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: { rate: vote, id: pid},
+                    success: function(data) {
+
+                        document.getElementById('replaceAllManager').innerHTML = data.View;
+                        Init();
+                    },
+                    error: function(err) {
+                        $('.result').text(err);
+                    },
+                    complete: function() {
+                    }
+                });
+            });
+        };
+
+        function Reset(a) {
+
+            
+            var url = '@Url.Action("RateSkill", "Manager")';
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: { rate: 0, id: a},
+                success: function(data) {
+
+                    document.getElementById('replaceAllManager').innerHTML = data.View;
+                    Init();
+                },
+                error: function(err) {
+                    $('.result').text(err);
+                },
+                complete: function() {
+                }
+            });
+
+        };
+
+        Init();
+   // });
+</script>

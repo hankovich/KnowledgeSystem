@@ -12,6 +12,10 @@ else
     {
          <li><a href="@Url.Action("Manage", "Skills")"><span class="glyphicon glyphicon-manage-skills"></span>My Skills</a></li>
     }
+    if (User.IsInRole("manager"))
+    {
+        <li><a href="@Url.Action("Index", "Manager")"><span class="glyphicon glyphicon-manage-skills"></span>Search</a></li>
+    }
     if (User.IsInRole("administrator"))
     {
         <li><a href="@Url.Action("Index", "Admin")"><span class="glyphicon glyphicon-manage-skills"></span>Admin page</a></li>

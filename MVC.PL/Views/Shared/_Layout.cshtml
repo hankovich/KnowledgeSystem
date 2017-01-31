@@ -9,7 +9,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("header", required: false)
 
@@ -21,18 +21,18 @@
     </style>
 
 
-    <script type="text/javascript" src="~/Scripts/rating.js"></script>
-    <link rel="stylesheet" href="~/Content/rating.css" type="text/css" media="screen" title="Rating CSS">
+    @*<script type="text/javascript" src="~/Scripts/rating.js"></script>*@
+    @*<link rel="stylesheet" href="~/Content/rating.css" type="text/css" media="screen" title="Rating CSS">*@
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(function() {
             $('.ratting-item').rating();
         });
-    </script>
+    </script>*@
 
 </head>
 <body>
-<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-3.1.1.min.js")"></script>*@
 
 @RenderSection("scripts", required: false)
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -83,8 +83,6 @@
     </div>
 </div>
 
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
