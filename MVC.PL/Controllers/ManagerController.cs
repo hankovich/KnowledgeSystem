@@ -20,8 +20,9 @@ namespace MVC.PL.Controllers
         private readonly IUserSkillService userSkillService;
         private readonly ISkillService skillService;
         private readonly IUserService userService;
-        
-        public ManagerController(ISkillCategoryService skillCategoryService, IUserSkillService userSkillService, ISkillService skillService, IUserService userService)
+
+        public ManagerController(ISkillCategoryService skillCategoryService, IUserSkillService userSkillService,
+            ISkillService skillService, IUserService userService)
         {
             this.skillCategoryService = skillCategoryService;
             this.skillService = skillService;
@@ -30,6 +31,7 @@ namespace MVC.PL.Controllers
         }
 
         // GET: Manager
+        [Authorize(Roles = "manager")]
         public ActionResult Index()
         {
             TempData["list"] = new List<KeyValuePair<int, int>>();
@@ -77,7 +79,7 @@ namespace MVC.PL.Controllers
             return model;
         }
 
-        [Authorize]
+        [Authorize(Roles = "manager")]
         public ActionResult RateSkill(int id, int rate)
         {
             List<KeyValuePair<int, int>> list = (List<KeyValuePair<int, int>>) TempData["list"];
@@ -86,7 +88,7 @@ namespace MVC.PL.Controllers
             if (list.Any(listItem => listItem.Key == id))
             {
                 int oldRate = list.FirstOrDefault(listItem => listItem.Key == id).Value;
-                list.Remove(new KeyValuePair<int, int>(id, oldRate)); 
+                list.Remove(new KeyValuePair<int, int>(id, oldRate));
             }
             if (rate != 0)
                 list.Add(new KeyValuePair<int, int>(id, rate));
@@ -94,9 +96,18 @@ namespace MVC.PL.Controllers
             TempData.Keep("list");
             bool success = true;
             string error = "";
-            
 
-            return Json(new { error = error, success = success, pid = id, View = PartialView("_ManagerUpdateView", GenerateModel(list)).RenderToString() }, JsonRequestBehavior.AllowGet);
+
+            return
+                Json(
+                    new
+                    {
+                        error = error,
+                        success = success,
+                        pid = id,
+                        View = PartialView("_ManagerUpdateView", GenerateModel(list)).RenderToString()
+                    },
+                    JsonRequestBehavior.AllowGet);
         }
     }
 

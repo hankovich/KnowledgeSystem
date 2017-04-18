@@ -1,0 +1,145 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model MVC.PL.Models.ProfileModel
+
+@{
+    ViewBag.Title = $"{Model.Email}'s profile";
+}
+
+<div class="container">
+    <div class="text-center"><h3><span>@Model.Email</span>'s account</h3></div>
+    <div class="center-block">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    Login:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.Login))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.Login</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    First Name:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.FirstName))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.FirstName.Trim()</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    Last Name:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.LastName))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.LastName.Trim()</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    Date Of Birth:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.DateOfBirth))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.DateOfBirth</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    Phone:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.Phone))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.Phone</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    City:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                if (string.IsNullOrEmpty(Model.City))
+                {
+                        <div>Not Indicated</div>
+                }
+                else
+                {
+                        <div>@Model.City</div>
+                }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>
+                    Company:
+                </strong>
+            </div>
+            <div class="col-md-9">
+                @{
+                    if (string.IsNullOrEmpty(Model.Company))
+                    {
+                        <div>Not Indicated</div>
+                    }
+                    else
+                    {
+                        <div>@Model.Company</div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

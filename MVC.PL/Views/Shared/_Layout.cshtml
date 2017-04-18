@@ -19,17 +19,6 @@
             margin: -18px 0 0 110px;
         }
     </style>
-
-
-    @*<script type="text/javascript" src="~/Scripts/rating.js"></script>*@
-    @*<link rel="stylesheet" href="~/Content/rating.css" type="text/css" media="screen" title="Rating CSS">*@
-
-    @*<script type="text/javascript">
-        $(function() {
-            $('.ratting-item').rating();
-        });
-    </script>*@
-
 </head>
 <body>
 @*<script src="@Url.Content("~/Scripts/jquery-3.1.1.min.js")"></script>*@
@@ -48,6 +37,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
                 @Html.Partial("_LoginPartial")
             </ul>
         </div>

@@ -8,9 +8,8 @@
     <div class="tab-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-9"></div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#CategoryAdd">Add category</button>
+                <div class="col-md-offset-9">
+                    <button type="button" class="btn btn-info btn-md pull-right awesome-padding" data-toggle="modal" data-target="#CategoryAdd">Add category</button>
                 </div>
                 <div id="CategoryAdd" class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -23,14 +22,13 @@
                             <div class="modal-footer">
                                 @using (@Ajax.BeginForm("AddCategory", "Admin", new AjaxOptions {UpdateTargetId = "resultsForAddedModel", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "CloseAddCategory"}))
                                 {
-                                    <input type="text" name="categoryName" id="AddCategoryName" class="pull-left"/>
+                                    <input type="text" name="categoryName" id="AddCategoryName" class="pull-left form-control"/>
                                     <input type="submit" name="saveButton" value="Go" class="btn btn-info btn-md pull-right">
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
             </div>
         </div>
         @foreach (var p in Model.skills)

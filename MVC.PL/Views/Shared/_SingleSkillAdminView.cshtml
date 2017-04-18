@@ -1,7 +1,7 @@
 ﻿@model MVC.PL.Models.SkillModel
 <div id="@Model.Id-One">
-    <div class="container">
-        <div class="well">
+    <div class="">
+        <div class="awesome-padding row">
             <div class="col-md-6">
                 <span class="skills">@Model.Name</span>
             </div>
@@ -16,8 +16,8 @@
                             <div class="modal-footer">
                                 @using (@Ajax.BeginForm("RenameSkill", "Admin", new { skillName = @Model.Name }, new AjaxOptions { UpdateTargetId = $"{@Model.Id}-One", InsertionMode = InsertionMode.Replace, OnBegin = "CloseModal" }))
                                 {
-                                    <input type="text" name="newSkillName" id="AddCategoryName" class="pull-left" />
-                                    <input type="submit" name="saveButton" value="Go" class="btn btn-info pull-right btn-lg">
+                                    <input type="text" name="newSkillName" id="AddCategoryName" class="pull-left form-control" />
+                                    <input type="submit" name="saveButton" value="Go" class="btn btn-info pull-right btn-md">
                                 }
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="modal-footer">
                                 @using (@Ajax.BeginForm("DeleteSkill", "Admin", new { skillName = @Model.Name }, new AjaxOptions { UpdateTargetId = $"{@Model.CategoryId}-SkillsCategory", InsertionMode = InsertionMode.Replace, OnBegin = "CloseModal" }))
                                 {
-                                    <input type="submit" name="saveButton" value="Delete" class="btn btn-danger pull-right btn-lg">
+                                    <input type="submit" name="saveButton" value="Delete" class="btn btn-danger pull-right btn-md">
                                 }
                             </div>
                         </div>

@@ -15,3 +15,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+.awesome-padding {
+    margin-bottom: 5px;
+}

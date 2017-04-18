@@ -48,7 +48,7 @@ namespace DAL.Repository
 
         public IEnumerable<DalRole> GetRolesOfUser(int userId)
         {
-            var roleIds = context.Set<UserRole>().ToList().Where(roleUser => roleUser.UserId == userId).Select(roleUser => roleUser.RoleId);
+            var roleIds = context.Set<UserRole>().ToList().Where(roleUser => roleUser.UserId == userId).Select(roleUser => roleUser.RoleId).ToList();
             return roleIds.Select(id => context.Set<Role>().ToList().FirstOrDefault(role => role.id == id).ToDalRole());
 
             //var roleIds = context.Set<UserRole>().Where(roleUser => roleUser.UserId == userId).Select(roleUser => roleUser.RoleId);

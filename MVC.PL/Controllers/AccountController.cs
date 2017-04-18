@@ -36,8 +36,6 @@ namespace MVC.PL.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            //var type = HttpContext.User.GetType();
-            //var iden = HttpContext.User.Identity.GetType();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -50,10 +48,8 @@ namespace MVC.PL.Controllers
             if (ModelState.IsValid)
             {
                 if ((/*(CustomMembershipProvider)*/Membership.Provider).ValidateUser(viewModel.Login, viewModel.Password))
-                //Проверяет учетные данные пользователя и управляет параметрами пользователей
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Login, viewModel.RememberMe);
-                    //Управляет службами проверки подлинности с помощью форм для веб-приложений
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);

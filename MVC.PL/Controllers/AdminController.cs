@@ -100,9 +100,12 @@ namespace MVC.PL.Controllers
         {
             var userToRemove = userService.GetUserEntityById(userId);
             var roleToRemove = roleService.GetRoleEntityByName(roleName);
-            if (userToRemove != null && roleToRemove != null && roleService.GetRoleEntitiesOfUser(userToRemove.id).Contains(roleToRemove))
-                userService.RemoveRoleFromUser(userToRemove.id, roleToRemove.id);
-
+            if (userToRemove != null)
+            {
+                var roleIdsOfUser = roleService.GetRoleEntitiesOfUser(userToRemove.id).Select(role => role.id);
+                if (roleToRemove != null && roleIdsOfUser.Contains(roleToRemove.id))
+                    userService.RemoveRoleFromUser(userToRemove.id, roleToRemove.id);
+            }
             return PartialView("_UserView", GenerateModel().userRole.FirstOrDefault(user => user.id == userId));
             //return Json( new {id = userId, role = roleName}, JsonRequestBehavior.AllowGet);
         }

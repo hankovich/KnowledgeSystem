@@ -20,8 +20,9 @@
                 <div class="well">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-3 .text-left .glyphicon-text-width">@profile.Login.Trim()</div>
-                            <div class="col-md-6 .text-left"><a href="mailto:@profile.Email.Trim()">@profile.Email.Trim()</a></div>
+                            @Html.ActionLink(@profile.Login.Trim(), "GetProfile", "Profile", new { userId=@profile.id }, new { target = "_blank", @class= "col-md-3 .text-left .glyphicon-text-width"})
+                            <div class="col-md-6 .text-left"><a href="mailto:@profile.Email.Trim()">@profile.Email.Trim()</a>
+                            </div>
                             @{ string phone = !string.IsNullOrEmpty(profile.Phone) ? profile.Phone : "not indicated"; }
                             <div class="col-md-3 .text-left">@phone</div>
                         </div>

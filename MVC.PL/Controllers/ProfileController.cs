@@ -75,5 +75,28 @@ namespace MVC.PL.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult GetProfile(int userId)
+        {
+            var profile = userService.GetUserEntityById(userId);
+            if (profile == null)
+                return HttpNotFound();
+
+            var model = new ProfileModel
+            {
+                id = profile.id,
+                City = profile.City,
+                FirstName = profile.FirstName,
+                LastName = profile.LastName,
+                Company = profile.Company,
+                DateOfBirth = profile.DateOfBirth?.Date.ToShortDateString() ?? string.Empty,//profile.DateOfBirth?.Date ?? profile.DateOfBirth,
+                Phone = profile.Phone,
+                Email = profile.Email,
+                Login = profile.Login
+            };
+            return View(model);
+        }
     }
 }
